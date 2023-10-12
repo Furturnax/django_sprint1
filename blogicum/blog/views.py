@@ -46,19 +46,18 @@ posts = [
 
 def index(request):
     template = 'blog/index.html'
-    context = {'posts_list': posts[::-1]}
+    context = {'posts': posts[::-1]}
     return render(request, template, context)
 
 
 def post_detail(request, id):
+    template = 'blog/detail.html'
     try:
-        context = {'post_detail': posts[id]}
+        context = {'post': posts[id]}
     except IndexError:
         return redirect('blog:index')
 
-    template = 'blog/detail.html'
     return render(request, template, context)
-
 
 
 def category_posts(request, category_slug):
