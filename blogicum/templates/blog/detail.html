@@ -14,7 +14,7 @@
       <li>
         Категория: 
           <a 
-            href="{{ post_detail.category }}"
+            href="{% url 'blog:category_posts' post_detail.category %}"
             >{{ post_detail.category }}</a>
       </li>
     </ul>         

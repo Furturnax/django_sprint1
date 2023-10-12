@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 posts = [
     {
@@ -51,9 +51,14 @@ def index(request):
 
 
 def post_detail(request, id):
+    try:
+        context = {'post_detail': posts[id]}
+    except IndexError:
+        return redirect('blog:index')
+
     template = 'blog/detail.html'
-    context = {'post_detail': posts[id]}
     return render(request, template, context)
+
 
 
 def category_posts(request, category_slug):
