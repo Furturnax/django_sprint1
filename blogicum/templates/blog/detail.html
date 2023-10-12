@@ -1,28 +1,25 @@
 {% extends "base.html" %}
 {% block title %}
-  <!-- Формируется из локации и даты -->
-  Остров отчаянья. 25 октября 1659 года
+  {{ post_detail.location }}. {{ post_detail.date }}
 {% endblock %}
 {% block content %}
   <article>
     <ul>
       <li>
-        Место: Остров отчаянья              
+        Место: {{ post_detail.location }}
       </li>
       <li>
-        Дата: 25 октября 1659 года
+        Дата: {{ post_detail.date }}
       </li>
       <li>
-        Категория: <a href="not-my-day">not-my-day</a>
+        Категория: 
+          <a 
+            href="{{ post_detail.category }}"
+            >{{ post_detail.category }}</a>
       </li>
     </ul>         
     <p>
-      Всю ночь и весь день шел дождь и дул сильный <br>
-      порывистый ветер. 25 октября.  Корабль за ночь разбило <br>
-      в щепки; на том месте, где он стоял, торчат какие-то <br>
-      жалкие обломки,  да и те видны только во время отлива. <br>
-      Весь этот день я хлопотал  около вещей: укрывал и <br>
-      укутывал их, чтобы не испортились от дождя.
+      {{ post_detail.text }}
     </p>          
   </article>
 {% endblock %}
