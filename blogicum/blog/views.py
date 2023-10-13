@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import Http404
 
 posts = [
@@ -50,8 +50,10 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    context = {'post': posts[post_id]}
-    return render(request, 'blog/detail.html', context)
+    post = next((post for post in posts if post['id'] == int(post_id)), None)
+    if post is None:
+        raise Http404("Page not found (404)/nПост такой-то не найден.")
+    return render(request, 'blog/detail.html', {'post': post})
 
 
 def category_posts(request, category_slug):
