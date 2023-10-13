@@ -21,7 +21,7 @@
         </li>
       </ul>
       <p>
-        {{ post.text|truncatewords:10|linebreaksbr }}
+        {{ post.text|linebreaksbr|truncatewords:10 }}
       </p>
       <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
     </article> 

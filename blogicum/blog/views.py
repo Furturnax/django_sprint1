@@ -49,11 +49,13 @@ def index(request):
     return render(request, 'blog/index.html', {'posts': posts[::-1]})
 
 
+post_ids = [post['id'] for post in posts]
+
+
 def post_detail(request, post_id):
-    post = next((post for post in posts if post['id'] == int(post_id)), None)
-    if post is None:
-        raise Http404("Page not found (404)/nПост такой-то не найден.")
-    return render(request, 'blog/detail.html', {'post': post})
+    if post_id not in post_ids:
+        raise Http404('Page not found (404). Пост не найден.')
+    return render(request, 'blog/detail.html', {'post': posts[post_id]})
 
 
 def category_posts(request, category_slug):
