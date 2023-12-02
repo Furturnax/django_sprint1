@@ -1,7 +1,7 @@
+from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render
-from django.http import Http404
 
-posts = [
+posts: list[dict[str, any]] = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -45,19 +45,23 @@ posts = [
 ]
 
 
-def index(request):
+def index(request: HttpRequest) -> HttpResponse:
+    """Рендерит страницу index.html с постами в обратном порядке."""
     return render(request, 'blog/index.html', {'posts': posts[::-1]})
 
 
-post_ids = [post['id'] for post in posts]
+post_ids: list[int] = [post['id'] for post in posts]
 
 
-def post_detail(request, post_id):
+def post_detail(request: HttpRequest, post_id: int) -> HttpResponse:
+    """Рендерит страницу detail.html с данными конкретного поста."""
     if post_id not in post_ids:
         raise Http404('Page not found (404). Пост не найден.')
     return render(request, 'blog/detail.html', {'post': posts[post_id]})
 
 
-def category_posts(request, category_slug):
-    return render(request, 'blog/category.html',
-                  {'category_slug': category_slug})
+def category_posts(request: HttpRequest, category_slug: str) -> HttpResponse:
+    """Рендерит страницу category.html с постами определённой категории."""
+    return render(
+        request, 'blog/category.html', {'category_slug': category_slug}
+    )
