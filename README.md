@@ -23,69 +23,14 @@
 
 <br>
 
-## Как запустить проект :shipit: :
-+ Клонировать репозиторий и перейти в него в командной строке:
-```bash
-git clone git@github.com:Furturnax/django_sprint1.git
-```
-
-```bash
-cd django_sprint1/
-```
-
-+ Cоздать и активировать виртуальное окружение (Windows/Bash):
-```bash
-python -m venv venv
-```
-
-```bash
-source venv/Scripts/activate
-```
-
-+ Установить зависимости из файла requirements.txt:
-```bash
-python -m pip install --upgrade pip
-```
-
-```bash
-pip install -r requirements.txt
-```
-
-+ Перейти в директорию с manage.py:
-```bash
-cd blogicum/
-```
-
-+ Выполнить миграции:
-```bash
-python manage.py migrate
-```
-
-+ Запустить проект:
-```bash
-python manage.py runserver
-```
-
-<br>
-
-## Просмотр контента:
-Перейти по адресу http://127.0.0.1:8000/. На данный момент доступно несколько записей, загруженных непосредственно во view-функцию. 
-
-<br>
-
-## Тестирование проекта:
-Тестирование реализовано с использованием библиотеки Pytest. 
-
-+ Запустить тесты из основной директории проекта:
-```bash
-pytest
-```
+## Запуск проекта :shipit: :
+[SetUp.md](./SetUp.md)
 
 <br>
 
 ## Авторство
 Автор проекта - Yandex Practicum | [GitHub](https://github.com/yandex-praktikum)
 
-Разработчик - Andrew Fedorchenko | [GitHub](https://github.com/Furturnax) [Telegram](https://t.me/furturnax)
+Разработчик - Andrew Fedorchenko | [GitHub](https://github.com/Furturnax)
 
 Ревьюер - Evgeniy Salahutdinov | [GitHub](https://github.com/EugeneSal)
